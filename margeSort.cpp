@@ -6,8 +6,25 @@ using namespace std;
 /*
 *  __margeSort是分解 
 *  __marge 是合并 
+*  __insertionSort是一个针对优化用的插入排序函数，当子集元素足够少时，使用插入排序会减少递归次数，效率会有所提升，
 *  margeSort是给用户的接口 
 */ 
+
+
+void __insertionSort(int arr[],int l, int r){
+	//插入排序，在数组的指定区间内进行插入排序 
+	for (int i = l+1;i <=r ;i++){
+		int e = arr[i];
+		int j;
+		for(j = i; j > l&& arr[j-1]>e ; j--){
+				arr[j] =arr[j-1];
+		}
+		arr[j]=e;		
+	}
+}
+
+
+
 void __marge(int arr[],int l,int mid,int r){
 //定义临时数组存放数据， 
 	int tmp[r-l+1];
@@ -39,7 +56,12 @@ void __marge(int arr[],int l,int mid,int r){
 
 void __margeSort(int arr[],int l, int r){
 //0 或 1 个元素说明已经分到最小了，直接return 
-	if (l >= r) return;
+	//if (l >= r) return;
+	if(r-l<=5) //区间内只有五个元素后就 进行插入排序，减少递归次数 
+	{
+		__insertionSort(arr,l, r); 
+		 return;
+	 }
 //寻找中间量，进行再次划分，  也可写为mid= (l+r+1) /2 这样奇数个元素时，右边会比左边多一个， 下面代码是左比又多 
 	int mid = (l + r) / 2;
 //再次划分 
