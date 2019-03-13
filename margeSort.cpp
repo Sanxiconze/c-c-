@@ -26,7 +26,7 @@ void __marge(int arr[],int l,int mid,int r){
 			a++;
 		}
 //从中间开始 左右比较将小的放回原数组 
-		else if (tmp[a-l] >tmp[b-l]){ //可以将 <换成 >号 
+		else if (tmp[a-l] <tmp[b-l]){ //可以将 <换成 >号 
 			arr[i] = tmp[a-l];
 			a++;
 		}else{
