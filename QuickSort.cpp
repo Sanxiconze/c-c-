@@ -17,7 +17,7 @@ void insertSort(int arr[], int l,int r){
 }
 
 int __partition(int arr[],int l,int r){
-	//这里采用 i , j两个坐标移动，将=e的元素分到左右两个结合中，减少递归次数。
+	//这里采用 i , j两个坐标移动，将=e的元素分到左右两个集合中，减少递归次数。
 	//(nlogn) 
 	int e = arr[l];
 	int i = l+1;
